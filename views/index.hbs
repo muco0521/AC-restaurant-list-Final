@@ -63,7 +63,7 @@
                   <span>
                     <a href="./restaurants/{{ this._id }}/edit"><button class="badge bg-success button">Edit</button></a>
                     <a href="./restaurants/{{ this._id }}"><button class="badge bg-success button">Detail</button></a>
-                    <form class="d-inline-block" action="/restaurants/{{ this._id }}/delete" method="post">
+                    <form class="d-inline-block" action="/restaurants/{{ this._id }}?_method=DELETE" method="POST">
                       <button type="submit" class="badge bg-danger button">Delete</button>
                     </form>
                   </span>
