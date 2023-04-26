@@ -4,7 +4,7 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const Restaurant = require('./models/restaurant')
-const restaurant = require('./models/restaurant')
+const handlebarsHelper = require('./config/handlebars-helper')
 
 if (process.env.NODE_ENV !== 'production') {
   require("dotenv").config()
@@ -24,7 +24,7 @@ db.once('open', () => {
 })
 
 
-app.engine('hbs', exphbs({ defaultLayout: 'main' , extname: 'hbs'}))
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs', handlebarsHelper: handlebarsHelper }))
 app.set('view engine', 'hbs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
@@ -50,15 +50,17 @@ app.get('/restaurants/:id', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
+  const sort = req.query.sort // sort({ _id: 'desc'}) === sort('-_id')
   const keyword = req.query.keyword.trim().toLowerCase()
   Restaurant.find()
     .lean()
+    .sort(`${sort}`)
     .then((restaurants) => {
       const filteredRestaurants = restaurants.filter((item) => 
          item.name.toLowerCase().includes(keyword) ||
          item.category.toLowerCase().includes(keyword)
     )
-      res.render('index', { restaurants: filteredRestaurants })
+      res.render('index', { restaurants: filteredRestaurants, keyword, sort})
     })
     .catch((error) => console.log('error'))
 })

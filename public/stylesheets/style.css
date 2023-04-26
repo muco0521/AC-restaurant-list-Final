@@ -1,18 +1,21 @@
 
 header {
+  width: 100%;
   overflow: hidden;
 }
 
 body {
   height: 100%;
   font-family: 'Noto Sans TC', sans-serif;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 footer {
+  width: 100%;
   height: 60px;
   margin-top: 60px;
+  position: absolute;
+  left: 0;
   background-color: #9b4b4b;
 }
 
@@ -81,11 +84,10 @@ footer {
 }
 
 .button {
+  padding: 5px;
   border: 0; 
-  height: 25px; 
-  width: 70px; 
   font-size: medium; 
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .restaurant-category {
