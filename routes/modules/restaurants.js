@@ -10,7 +10,7 @@ router.get('/:id', (req, res) => {
   return Restaurant.findById(id)
     .lean()
     .then((restaurant) => res.render('show', { restaurant }))
-    .catch((error) => console.log('error'))
+    .catch((error) => console.log(error))
 })
 
 router.get('/:id/edit', (req, res) => {
@@ -18,14 +18,14 @@ router.get('/:id/edit', (req, res) => {
   Restaurant.findById(id)
     .lean()
     .then((restaurant) => res.render('edit', { restaurant }))
-    .catch((error) => console.log('error'))
+    .catch((error) => console.log(error))
 })
 
 router.post('/', (req, res) => {
   const newRestaurant = req.body
   return Restaurant.create(newRestaurant)
     .then(() => res.redirect('/'))
-    .catch((error) => console.log('error'))
+    .catch((error) => console.log(error))
 })
 
 router.put('/:id', (req, res) => {
@@ -33,7 +33,7 @@ router.put('/:id', (req, res) => {
   const restaurant = req.body
   return Restaurant.findByIdAndUpdate(id, restaurant)
     .then(() => res.redirect(`/restaurants/${id}`))
-    .catch((error) => console.log('error'))
+    .catch((error) => console.log(error))
 })
 
 router.delete('/:id', (req, res) => {
@@ -41,7 +41,7 @@ router.delete('/:id', (req, res) => {
   return Restaurant.findById(id)
     .then((restaurant) => restaurant.remove())
     .then(() => res.redirect('/'))
-    .catch((error) => console.log('error'))
+    .catch((error) => console.log(error))
 })
 
 module.exports = router

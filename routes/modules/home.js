@@ -21,7 +21,7 @@ router.get('/search', (req, res) => {
       )
       res.render('index', { restaurants: filteredRestaurants, keyword, sort })
     })
-    .catch((error) => console.log('error'))
+    .catch((error) => console.log(error))
 })
 
 module.exports = router
