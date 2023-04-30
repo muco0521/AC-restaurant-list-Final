@@ -19,7 +19,7 @@
 
         <div>
           <select class="form-select" aria-label="Default select example" name="sort" onchange="this.form.submit()">
-            <option value="">選擇排序方式</option>
+            <option value="" {{#unless sort}} disabled {{/unless}} selected>選擇排序方式</option>
             <option value="-_id" {{#is sort "-_id" }} selected {{/is}}>最新</option>
             <option value="_id" {{#is sort "_id" }} selected {{/is}}>最舊</option>
             <option value="-rating" {{#is sort "-rating" }} selected {{/is}}>評分高➡低</option>
@@ -33,9 +33,15 @@
     </div>
   </form>
   <!-- restaurant list -->
-  <div class="container mt-4">
+  <div id="restaurant-panel" class="container mt-4">
     <div class="row">
       <div class="col-md-10 col-12 mx-auto">
+        {{#unless restaurants}}
+        <div class="d-flex flex-column align-items-center mt-5">
+          <i class="fas fa-exclamation-circle fa-5x text-danger "></i>
+          <h4 class="text-secondary mt-4">找不到餐廳!</h4>
+        </div>
+        {{/unless}}
         <div class="row row-cols-sm-3">
           {{#each restaurants}}
           <div class="mb-3">
@@ -58,14 +64,14 @@
                 </span>
               </div>
 
-              <div class="card-footer text-muted ">
+              <div class="card-footer text-muted">
                 <div class="d-flex justify-content-end my-1">
                   <span>
-                    <a href="./restaurants/{{ this._id }}/edit"><button class="badge bg-success button">Edit</button></a>
-                    <a href="./restaurants/{{ this._id }}"><button class="badge bg-success button">Detail</button></a>
-                    <form class="d-inline-block" action="/restaurants/{{ this._id }}?_method=DELETE" method="POST">
-                      <button type="submit" class="badge bg-danger button">Delete</button>
-                    </form>
+                    <a class="badge bg-success button" href="./restaurants/{{ this._id }}/edit"> Edit </a>
+                    <a class="badge bg-success button" href="./restaurants/{{ this._id }}"> Detail </a>
+                    <button type="button" class="badge bg-danger button delete-btn" data-id="{{ this._id }}"
+                      data-name="{{ this.name }}">Delete
+                    </button>
                   </span>
                 </div>
               </div>

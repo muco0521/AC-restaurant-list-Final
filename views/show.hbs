@@ -1,5 +1,5 @@
 <h1 class="mb-1 restaurant-show-title">{{ restaurant.name }}</h1>
-<div class="container">
+<div id="restaurant-panel" class="container">
   <div class="row">
     <div class="col-12 col-md-10 mx-auto">
       <div class="d-flex justify-content-between">
@@ -11,11 +11,11 @@
           {{ restaurant.category }}
         </p>
         <span class="text-secondary">
-          <a href="./{{ restaurant._id }}/edit"><button class="badge btn-success button">Edit</button></a>
-          <form class="d-inline-block" action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST">
-            <button type="submit" class="badge bg-danger button">Delete</button>
-          </form>
-          <a href="/"><button class="badge btn-major button"><i class="fas fa-home"></i></button></a>
+          <a href="./{{ restaurant._id }}/edit" class="badge btn-success button">Edit</a>
+          <button type="button" class="badge bg-danger button delete-btn" data-id="{{ restaurant._id }}"
+            data-name="{{ restaurant.name }}">Delete
+          </button>
+          <a href="/" class="badge btn-major button"> <i class="fas fa-home"></i> </a>
         </span>
       </div>
 

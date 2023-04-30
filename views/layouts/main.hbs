@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>restaurant list</title>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <!-- font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css">
+  <!-- css -->
+  <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+  <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Roboto:wght@300;400;500&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css">
-  <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- sweetalert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
   <header>
     <!-- navigation -->
@@ -29,15 +35,19 @@
         <a href="/restaurants/new" class="btn btn-major" id="create-button"><i class="fas fa-plus"></i> 新增餐廳</a>
       </div>
     </nav>
-  
+
     <div class="banner"></div>
   </header>
 
   {{{ body }}}
-  
-  <script src="/javascripts/popper.js"></script>
-  <script src="/javascripts/boostrap.js"></script>
+  <!--Bootstrap-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+  <!-- script -->
+  <script src="/javascripts/deleteModal.js"></script>
 </body>
+
 <footer>
 </footer>
+
 </html>

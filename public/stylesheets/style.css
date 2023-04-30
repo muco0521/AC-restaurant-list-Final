@@ -4,7 +4,7 @@ header {
   overflow: hidden;
 }
 
-body {
+html,body {
   height: 100%;
   font-family: 'Noto Sans TC', sans-serif;
   font-weight: 400;
@@ -14,9 +14,12 @@ footer {
   width: 100%;
   height: 60px;
   margin-top: 60px;
-  position: absolute;
-  left: 0;
   background-color: #9b4b4b;
+}
+
+a, a:hover {
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .navbar .navbar-brand {
@@ -25,6 +28,10 @@ footer {
 
 .navbar .navbar-brand:hover {
   color: #226089;
+}
+
+.container {
+  min-height: calc(100% - 60px);
 }
 
 .banner {
