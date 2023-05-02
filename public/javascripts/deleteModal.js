@@ -17,14 +17,10 @@ restaurantPanel.addEventListener('click', function onDeleteBtnClick (event) {
           'Deleted!',
           'Your file has been deleted.',
           'success'
-        ).then((result) => {
-          if (result.isConfirmed) {
-            fetch(`/restaurants/${id}?_method=delete`, {
-              method: 'POST'
-            })
-              .then(() => location.href = '/')
-              .catch(error => console.log(error))
-          }
+        ).then(() => {
+          fetch(`/restaurants/${id}?_method=delete`, { method: 'POST' })
+            .then(() => window.location.reload())
+            .catch(error => console.log(error))
         })
       }
     })
