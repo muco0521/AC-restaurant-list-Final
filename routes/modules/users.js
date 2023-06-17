@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const User = require('../../Models/user')
+const passport = require('passport')
 
 router.get('/login', (req, res) => {
   res.render('login')
@@ -9,8 +10,10 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
-router.post('/login', (req, res) => {
-})
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: 'users/login'
+}))
 
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
