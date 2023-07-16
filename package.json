@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
-    "standard": "^17.0.0"
+    "standard": "^17.1.0"
   },
   "repository": {
     "type": "git",

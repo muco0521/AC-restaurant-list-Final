@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
-const handlebarsHelper = require('./config/handlebars-helper')
+const helpers = require('./config/handlebars-helper')
 const routes = require('./routes')
 const usePassport = require('./config/passport')
 require('./config/mongoose')
@@ -15,7 +15,7 @@ require('./config/mongoose')
 const app = express()
 const PORT = process.env.PORT
 
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs', handlebarsHelper }))
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs', helpers }))
 app.set('view engine', 'hbs')
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -38,7 +38,6 @@ app.use((req, res, next) => {
 })
 
 app.use(routes)
-
 
 app.listen(PORT, () => {
   console.log(`Express is running on http://localhost:${PORT}`)

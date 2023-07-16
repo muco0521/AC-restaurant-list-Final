@@ -8,7 +8,7 @@ const User = require('../Models/user')
 module.exports = app => {
   app.use(passport.initialize())
   app.use(passport.session())
-  
+
   passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
     User.findOne({ email })
       .then(user => {
@@ -28,31 +28,31 @@ module.exports = app => {
   }))
 
   passport.use(new FacebookStrategy({
-      clientID: process.env.FB_ID,
-      clientSecret: process.env.FB_SECRET,
-      callbackURL: process.env.FB_CALLBACK,
-      profileFields: ['email', 'displayName']
-    },
-    (accessToken, refreshToken, profile, done) => {
-      const { name, email } = profile._json
-      User.findOne({ email })
-        .then(user => {
-          if (user) {
-            return done(null, user)
-          }
-          const randomPassword = Math.random().toString(36).slice(-8)
-          bcrypt
-            .genSalt(10)
-            .then(salt => bcrypt.hash(randomPassword, salt))
-            .then(hash => User.create({
-              email,
-              name,
-              password: hash
-            }))
-            .then(user => done(null, user))
-            .catch(err => done(err, false))
-        })
-    }
+    clientID: process.env.FB_ID,
+    clientSecret: process.env.FB_SECRET,
+    callbackURL: process.env.FB_CALLBACK,
+    profileFields: ['email', 'displayName']
+  },
+  (accessToken, refreshToken, profile, done) => {
+    const { name, email } = profile._json
+    User.findOne({ email })
+      .then(user => {
+        if (user) {
+          return done(null, user)
+        }
+        const randomPassword = Math.random().toString(36).slice(-8)
+        bcrypt
+          .genSalt(10)
+          .then(salt => bcrypt.hash(randomPassword, salt))
+          .then(hash => User.create({
+            email,
+            name,
+            password: hash
+          }))
+          .then(user => done(null, user))
+          .catch(err => done(err, false))
+      })
+  }
   ))
 
   passport.serializeUser((user, done) => {

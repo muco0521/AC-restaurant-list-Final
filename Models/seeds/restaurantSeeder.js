@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs')
 
 db.once('open', async () => {
   await Promise.all(
-    users.map(async (user, user_index) => {
+    users.map(async (user, userIndex) => {
       const salt = await bcrypt.genSalt(10)
       const hash = await bcrypt.hash(user.password, salt)
       user.password = hash
@@ -14,8 +14,8 @@ db.once('open', async () => {
       console.log('user created!')
 
       const userRestaurant = []
-      restaurants.forEach((restaurant, rest_index) => {
-        if (rest_index < (user_index + 1) * 3 && rest_index >= user_index * 3) {
+      restaurants.forEach((restaurant, restIndex) => {
+        if (restIndex < (userIndex + 1) * 3 && restIndex >= userIndex * 3) {
           restaurant.userId = createdUser._id
           userRestaurant.push(restaurant)
         }
