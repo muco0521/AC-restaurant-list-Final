@@ -1,33 +1,44 @@
-# Restaurant List ( AC 2-3 A8 )
+# Restaurant List ( AC 3 A3 )
 
-![image](https://raw.githubusercontent.com/muco0521/AC-restaurant-list-RESTful/main/public/image/restaurant_list_image_4.png)
+![image](https://raw.githubusercontent.com/muco0521/AC-restaurant-list-Final/main/public/image/restaurant_list_image_5.png)
+![image](https://raw.githubusercontent.com/muco0521/AC-restaurant-list-Final/main/public/image/restaurant_list_image_6.png)
 
 ## About - 介紹
-這是使用 Node.js + Express + MongoDB + Mongoose 與 RESTful架構風格設計的一個餐廳網站。
+使用 Node.js + Express + MongoDB 餐廳清單網站。 使用者可以註冊帳號、登入，並查看、新增、編輯或刪除專屬該用戶的餐廳資訊。
 
 ## Features - 功能
 
-1. 可以瀏覽全部餐廳
-2. 可以依餐廳名稱、分類使用關鍵字來搜尋
-3. 可以查看餐廳的詳細資訊，地址、電話...等等資訊
-4. 可以新增餐廳清單
-5. 可以編輯餐廳資訊
-6. 可以刪除餐廳清單
-7. 可以依不同方式排序餐廳清單
+1. 可以註冊帳號，登入，登出
+2. 可以用 Facebook 帳號登入
+3. 可以瀏覽使用者專屬的餐廳清單
+4. 可以依餐廳名稱、分類使用關鍵字來搜尋
+5. 可以查看餐廳的詳細資訊，地址、電話...等等資訊
+6. 可以新增餐廳清單
+7. 可以編輯餐廳資訊
+8. 可以刪除餐廳清單
+9. 可以依不同方式排序餐廳清單
 
-## Prerequisites - 環境建置與需求
+
+## Development Tools - 開發工具
 
 * Node.js
 * Express @4.18.2
 * Express-handlebars @4.0.2
 * MongoDB
 * mongoose @5.13.17
+* method-override @3.0.0
+* express-session @1.17.3
+* passport @0.6.0
+* passport-facebook @3.0.0
+* passport-local @1.0.0
+* connect-flash @0.1.1
+* bcryptjs @2.4.3
 
-## Installation and Execution - 安裝與執行步驟
+## Installation and execution - 安裝與執行步驟
 
 1.開啟Terminal, Clone此專案至本機:
 ```
-git clone https://github.com/muco0521/AC-restaurant-list-CRUD.git
+git clone https://github.com/muco0521/AC-restaurant-list-Final.git
 ```
 
 2.進入專案資料夾，安裝 npm 套件
@@ -35,15 +46,13 @@ git clone https://github.com/muco0521/AC-restaurant-list-CRUD.git
 npm install
 ```
 
-3.安裝nodemon 
+3.安裝 nodemon 
 ```
 npm install nodemon
 ```
 
-4.在專案資料夾內新增一個.env檔案，並輸入 MongoDB 你的連線字串
-```
-MONGODB_URI = "<你的連線字串>"
-```
+4.設置 .env 檔
+填寫`.env.example`所需資料，新增成`.env` 檔案
 
 5.製作種子資料
 ```
@@ -59,9 +68,4 @@ npm run dev
 ```
 Express is listening on localhost:3000
 MongoDB is connect!
-```
-
-8.開啟瀏覽器，輸入以下網址，使用本專案
-```
-http://localhost:3000 
 ```
